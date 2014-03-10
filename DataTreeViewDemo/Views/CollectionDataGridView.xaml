@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="DataTreeViewDemo.Views.CollectionDataGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="300"
+             d:DesignWidth="400"
+             mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot"
+          Background="White">
+
+        <StackPanel Height="200"
+                    Margin=" 5,5,5,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+            <StackPanel Height="40"
+                        Margin="5,5"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                <TextBox Width="100"
+                         KeyDown="TextBox_KeyDown" />
+                <telerik:RadButton Click="RadButton_Click"
+                                   Content=" 扫描结束" />
+            </StackPanel>
+            <StackPanel Margin="5,5"
+                        Orientation="Horizontal">
+                <telerik:RadGridView x:Name="radGridView"
+                                     AutoGenerateColumns="False">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Id}"
+                                                    Header="ID"
+                                                    UniqueName="ID">
+                            <telerik:GridViewDataColumn.AggregateFunctions>
+                                <telerik:CountFunction Caption="Count: " />
+                            </telerik:GridViewDataColumn.AggregateFunctions>
+
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}"
+                                                    Header="Code" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Status}"
+                                                    Header="Status" />
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+                <telerik:RadGridView x:Name="OrgRadGridView"
+                                     AutoGenerateColumns="False">
+                    <telerik:RadGridView.Columns>
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Id}"
+                                                    Header="ID"
+                                                    UniqueName="ID" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Count}"
+                                                    Header="Count"
+                                                    UniqueName="Count" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Code}"
+                                                    Header="Code" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Status}"
+                                                    Header="Status" />
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DCSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DCSModelStoreContainer">
+          <EntitySet Name="Product" EntityType="DCSModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductAffiProductCategory" EntityType="DCSModel.Store.ProductAffiProductCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductCategory" EntityType="DCSModel.Store.ProductCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TiledRegion" EntityType="DCSModel.Store.TiledRegion" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CanBeOrdered" Type="bit" Nullable="false" />
+          <Property Name="IfPurchasable" Type="bit" Nullable="false" />
+          <Property Name="OrderCycle" Type="int" />
+          <Property Name="PurchaseCycle" Type="int" />
+          <Property Name="IfOption" Type="bit" Nullable="false" />
+          <Property Name="ProductLifeCycle" Type="int" Nullable="false" />
+          <Property Name="ParameterDescription" Type="varchar" MaxLength="200" />
+          <Property Name="Version" Type="varchar" MaxLength="20" />
+          <Property Name="Configuration" Type="varchar" MaxLength="50" />
+          <Property Name="EngineCylinder" Type="varchar" MaxLength="50" />
+          <Property Name="EmissionStandard" Type="varchar" MaxLength="50" />
+          <Property Name="ManualAutomatic" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="int" />
+          <Property Name="ColorCode" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Picture" Type="varchar" MaxLength="200" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreatorName" Type="varchar" MaxLength="100" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ModifierId" Type="int" />
+          <Property Name="ModifierName" Type="varchar" MaxLength="100" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="AbandonerId" Type="int" />
+          <Property Name="AbandonerName" Type="varchar" MaxLength="100" />
+          <Property Name="AbandonTime" Type="datetime" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ProductAffiProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="RootCategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="LayerNodeTypeId" Type="int" />
+          <Property Name="RootCategoryId" Type="int" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Picture" Type="varchar" MaxLength="200" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ProductCategoryLevel" Type="int" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="200" />
+          <Property Name="CreatorId" Type="int" />
+          <Property Name="CreatorName" Type="varchar" MaxLength="100" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ModifierId" Type="int" />
+          <Property Name="ModifierName" Type="varchar" MaxLength="100" />
+          <Property Name="ModifyTime" Type="datetime" />
+          <Property Name="AbandonerId" Type="int" />
+          <Property Name="AbandonerName" Type="varchar" MaxLength="100" />
+          <Property Name="AbandonTime" Type="datetime" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="MarshallingSequence" Type="int" />
+        </EntityType>
+        <EntityType Name="TiledRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RegionName" Type="varchar" MaxLength="100" />
+          <Property Name="ProvinceName" Type="varchar" MaxLength="100" />
+          <Property Name="CityName" Type="varchar" MaxLength="100" />
+          <Property Name="CountyName" Type="varchar" MaxLength="100" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DCSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DcSEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="DCSModel.Product" />
+          <EntitySet Name="ProductAffiProductCategories" EntityType="DCSModel.ProductAffiProductCategory" />
+          <EntitySet Name="ProductCategories" EntityType="DCSModel.ProductCategory" />
+          <EntitySet Name="TiledRegions" EntityType="DCSModel.TiledRegion" />
+        </EntityContainer>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CanBeOrdered" Type="Boolean" Nullable="false" />
+          <Property Name="IfPurchasable" Type="Boolean" Nullable="false" />
+          <Property Name="OrderCycle" Type="Int32" />
+          <Property Name="PurchaseCycle" Type="Int32" />
+          <Property Name="IfOption" Type="Boolean" Nullable="false" />
+          <Property Name="ProductLifeCycle" Type="Int32" Nullable="false" />
+          <Property Name="ParameterDescription" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Version" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Configuration" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EngineCylinder" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EmissionStandard" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ManualAutomatic" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Color" Type="Int32" />
+          <Property Name="ColorCode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Picture" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreatorName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifierId" Type="Int32" />
+          <Property Name="ModifierName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="AbandonerId" Type="Int32" />
+          <Property Name="AbandonerName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AbandonTime" Type="DateTime" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="ProductAffiProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="RootCategoryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="LayerNodeTypeId" Type="Int32" />
+          <Property Name="RootCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Picture" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ProductCategoryLevel" Type="Int32" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CreatorId" Type="Int32" />
+          <Property Name="CreatorName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifierId" Type="Int32" />
+          <Property Name="ModifierName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+          <Property Name="AbandonerId" Type="Int32" />
+          <Property Name="AbandonerName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="AbandonTime" Type="DateTime" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="MarshallingSequence" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TiledRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RegionName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ProvinceName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CityName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CountyName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DCSModelStoreContainer" CdmEntityContainer="DcSEntities">
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DCSModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CanBeOrdered" ColumnName="CanBeOrdered" />
+                <ScalarProperty Name="IfPurchasable" ColumnName="IfPurchasable" />
+                <ScalarProperty Name="OrderCycle" ColumnName="OrderCycle" />
+                <ScalarProperty Name="PurchaseCycle" ColumnName="PurchaseCycle" />
+                <ScalarProperty Name="IfOption" ColumnName="IfOption" />
+                <ScalarProperty Name="ProductLifeCycle" ColumnName="ProductLifeCycle" />
+                <ScalarProperty Name="ParameterDescription" ColumnName="ParameterDescription" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Configuration" ColumnName="Configuration" />
+                <ScalarProperty Name="EngineCylinder" ColumnName="EngineCylinder" />
+                <ScalarProperty Name="EmissionStandard" ColumnName="EmissionStandard" />
+                <ScalarProperty Name="ManualAutomatic" ColumnName="ManualAutomatic" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ColorCode" ColumnName="ColorCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreatorName" ColumnName="CreatorName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ModifierId" ColumnName="ModifierId" />
+                <ScalarProperty Name="ModifierName" ColumnName="ModifierName" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="AbandonerId" ColumnName="AbandonerId" />
+                <ScalarProperty Name="AbandonerName" ColumnName="AbandonerName" />
+                <ScalarProperty Name="AbandonTime" ColumnName="AbandonTime" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductAffiProductCategories">
+            <EntityTypeMapping TypeName="DCSModel.ProductAffiProductCategory">
+              <MappingFragment StoreEntitySet="ProductAffiProductCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductCategoryId" ColumnName="ProductCategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="RootCategoryId" ColumnName="RootCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="DCSModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LayerNodeTypeId" ColumnName="LayerNodeTypeId" />
+                <ScalarProperty Name="RootCategoryId" ColumnName="RootCategoryId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ProductCategoryLevel" ColumnName="ProductCategoryLevel" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="CreatorName" ColumnName="CreatorName" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="ModifierId" ColumnName="ModifierId" />
+                <ScalarProperty Name="ModifierName" ColumnName="ModifierName" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="AbandonerId" ColumnName="AbandonerId" />
+                <ScalarProperty Name="AbandonerName" ColumnName="AbandonerName" />
+                <ScalarProperty Name="AbandonTime" ColumnName="AbandonTime" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="MarshallingSequence" ColumnName="MarshallingSequence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiledRegions">
+            <EntityTypeMapping TypeName="DCSModel.TiledRegion">
+              <MappingFragment StoreEntitySet="TiledRegion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="DataTreeViewDemo.Views.MergetDataGridView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="300"
+             d:DesignWidth="400"
+             mc:Ignorable="d">
+
+    <Controls:Grid Name="LayoutRoot">
+        <telerik:RadGridView x:Name="RadGridView"
+                             Width="628"
+                             AutoExpandGroups="True"
+                             AutoGenerateColumns="False"
+                             CanUserFreezeColumns="False"
+                             ColumnWidth="100"
+                             GridLinesVisibility="Vertical"
+                             GroupRenderMode="Flat"
+                             IsFilteringAllowed="False"
+                             RowIndicatorVisibility="Collapsed"
+                             ShowGroupPanel="False">
+            <telerik:RadGridView.ColumnGroups>
+                <telerik:GridViewColumnGroup Name="车型"
+                                             Header="车型" />
+                <telerik:GridViewColumnGroup Name="型号"
+                                             Header="型号" />
+
+            </telerik:RadGridView.ColumnGroups>
+            <telerik:RadGridView.GroupDescriptors>
+                <telerik:GroupDescriptor Member="Category">
+                    <telerik:GroupDescriptor.AggregateFunctions>
+                        <telerik:CountFunction />
+                    </telerik:GroupDescriptor.AggregateFunctions>
+                </telerik:GroupDescriptor>
+            </telerik:RadGridView.GroupDescriptors>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewSelectColumn />
+                <telerik:GridViewDataColumn ColumnGroupName="车型"
+                                            DataMemberBinding="{Binding Model}"
+                                            Header="潜客意向A" />
+                <telerik:GridViewDataColumn ColumnGroupName="车型"
+                                            DataMemberBinding="{Binding Variant}"
+                                            Header="前三月平均销售量" />
+                <telerik:GridViewDataColumn ColumnGroupName="车型"
+                                            DataMemberBinding="{Binding Power}"
+                                            Header="现有数量" />
+                <telerik:GridViewDataColumn ColumnGroupName="型号"
+                                            DataMemberBinding="{Binding Fuel}"
+                                            Header="本月月度系数" />
+                <telerik:GridViewDataColumn ColumnGroupName="型号"
+                                            DataMemberBinding="{Binding USD}"
+                                            Header="推荐值" />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Controls:Grid>
+</UserControl>

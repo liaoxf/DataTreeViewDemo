@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="DataTreeViewDemo.Views.PivotGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pivot="http://schemas.telerik.com/2008/xaml/presentation/pivot"
+             d:DesignHeight="480"
+             d:DesignWidth="640"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <pivot:LocalDataSourceProvider x:Key="LocalDataProvider"
+                                       AggregatesPosition="Rows">
+            <pivot:LocalDataSourceProvider.RowGroupDescriptions>
+                <pivot:PropertyGroupDescription PropertyName="Name" />
+            </pivot:LocalDataSourceProvider.RowGroupDescriptions>
+            <pivot:LocalDataSourceProvider.ColumnGroupDescriptions>
+                <pivot:DateTimeGroupDescription PropertyName="Date"
+                                                Step="Month" />
+            </pivot:LocalDataSourceProvider.ColumnGroupDescriptions>
+            <pivot:LocalDataSourceProvider.AggregateDescriptions>
+                <pivot:PropertyAggregateDescription AggregateFunction="Average"
+                                                    PropertyName="Price"
+                                                    StringFormat="C" />
+                <pivot:PropertyAggregateDescription PropertyName="Quantity" />
+            </pivot:LocalDataSourceProvider.AggregateDescriptions>
+        </pivot:LocalDataSourceProvider>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <pivot:RadPivotGrid Name="radPivotGrid1"
+                            DataProvider="{StaticResource LocalDataProvider}" />
+    </Grid>
+
+</UserControl>
